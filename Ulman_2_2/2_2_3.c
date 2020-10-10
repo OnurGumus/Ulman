@@ -16,14 +16,15 @@ LIST createFromString(const char* s)
         return 0;
     }
     LIST current = list;
-    for (int i = 0; i < len - 1; i++)
+    while(*s != s[len-1])
     {
-        current->element = s[i];
+        current->element = *s;
         LIST const next = current + 1;
         current->next = next;
         current = next;
+        s++;
     }
-    current->element = s[len - 1];
+    current->element = *s;
     current->next = 0;
     return list;
 }
